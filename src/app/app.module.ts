@@ -1,18 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AddExpenseComponent } from './components/add-expense/add-expense.component';
+import { ExpenseListComponent } from './components/expense-list/expense-list.component';
+import { ExpenseService } from './services/expense.service';
+
+// Define routes in a separate variable
+const appRoutes: Routes = [
+  { path: '', redirectTo: 'add-expense', pathMatch: 'full' },
+  { path: 'add-expense', component: AddExpenseComponent },
+  { path: 'expense-list', component: ExpenseListComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddExpenseComponent,
+    ExpenseListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes) // Use the routes here
   ],
-  providers: [],
+  providers: [ExpenseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

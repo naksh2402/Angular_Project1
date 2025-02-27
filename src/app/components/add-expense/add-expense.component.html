@@ -1,0 +1,21 @@
+<div class="container expense-form">
+  <h2 class="text-center">Add Expense</h2>
+  <input type="date" [(ngModel)]="expense.date" required />
+  <input
+    type="text"
+    [(ngModel)]="expense.category"
+    placeholder="Category"
+    required
+  />
+  <input
+    type="number"
+    [(ngModel)]="expense.amount"
+    placeholder="Amount"
+    required
+  />
+  <textarea
+    [(ngModel)]="expense.description"
+    placeholder="Description (optional)"
+  ></textarea>
+  <button (click)="addExpense()">Add Expense</button>
+</div>
